@@ -82,5 +82,20 @@ public class ArrayBasedStack<T> implements StackInterface<T>{
    }
   }
 
- 
+ public static void main(String[] args){
+  StackInterface<String> stack = new ArrayBasedStack(1);
+  System.out.println(stack.isEmpty());
+  stack.push("Hello");
+  stack.push("World");
+  System.out.println(stack.peek());
+  System.out.println(stack.pop());
+  System.out.println(stack.peek());
+  System.out.println(stack.pop());
+  stack.push("o");
+  System.out.println(stack.pop());
+  System.out.println(stack.isEmpty());
+  stack.pop();
+  }
+
+
 }
