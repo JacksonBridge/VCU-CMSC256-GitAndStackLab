@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 
 public class ArrayBasedStack<T> implements StackInterface<T>{
 
@@ -30,24 +30,57 @@ public class ArrayBasedStack<T> implements StackInterface<T>{
  
  public void push(T newEntry)
   {
-  if(data[0] != null && data[data.length - 1] != null)
+  if(topOfStack + 1 == data.length)
    {
-  // for(int i = length.data
+   doubleArray();
    }
-  
+  data[++topOfStack] = newEntry;
   }
   
- public T pop(){}
+ public T pop()
+  {
+  if(isEmpty() == true)
+   {
+   throw new EmptyStackException();
+   }
+  T temp = data[topOfStack];
+  data[topOfStack] = null;
+  topOfStack--;
+  return temp;  
+  }
   /** Retrieves this stack's top entry.
      @return  The object at the top of the stack.
      @throws  EmptyStackException if the stack is empty. */
- public T peek(){}
+ public T peek()
+  {
+  if(isEmpty())
+   {
+   throw new EmptyStackException();
+   }
+  return data[topOfStack];
+  }
   /** Detects whether this stack is empty.
      @return  True if the stack is empty. */
- public boolean isEmpty(){}
+ public boolean isEmpty()
+  {
+  if(topOfStack == -1)
+   {
+  return true;
+   }
+  else
+   {
+   return false;
+   }
+  }
   
  /** Removes all entries from this stack. */
- public void clear(){}
+ public void clear()
+  {
+  while(!isEmpty())
+   {
+   pop();   
+   }
+  }
 
  
 }
